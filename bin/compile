@@ -94,6 +94,12 @@ else
   cp -r $build_dir/vendor/node $cache_dir/vendor/
 fi
 
+status "Deploying assets"
+./node_modules/frontier-build-tools/node_modules/.bin/cake assets:deploy
+
+status "Running tests"
+./bin/tests
+
 # Update the PATH
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
