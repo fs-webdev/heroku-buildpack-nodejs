@@ -77,8 +77,10 @@ else
   status "Rebuilding dependencies"
   npm rebuild | indent
 
-  status "Installing dependencies"
-  npm install --production | indent
+  status "Installing dependencies (including dev dependencies)"
+  export NODE_ENV='development'
+  npm install | indent
+  export NODE_ENV='production'
 
   status "Caching node_modules for future builds"
   rm -rf $cache_dir
