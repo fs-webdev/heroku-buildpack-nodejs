@@ -72,6 +72,9 @@ if test -d $cache_dir; then
     npm install --production | indent
   fi
 
+  # Update any dependencies that aren't pinned to a specific version number
+  npm update
+
 else
 
   status "Rebuilding dependencies"
